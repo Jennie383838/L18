@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, StatusBar, Text, TextInput, View, Image, StyleSheet } from 'react-native';
+import {
+    FlatList,
+    StatusBar,
+    Text,
+    TextInput,
+    View,
+    Image,
+    StyleSheet
+} from 'react-native';
 
 let originalData = [];
 
@@ -34,7 +42,7 @@ const App = () => {
             <Image
                 source={{ uri: item.idol_pic }}
                 style={styles.cardImage}
-                resizeMode="contain"
+                resizeMode="cover"
             />
         </View>
     );
@@ -42,6 +50,7 @@ const App = () => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
+
             <Text style={styles.label}>Search:</Text>
             <TextInput
                 style={styles.searchInput}
@@ -49,11 +58,12 @@ const App = () => {
                 placeholderTextColor="#999"
                 onChangeText={(text) => FilterData(text)}
             />
+
             <FlatList
                 data={myData}
                 renderItem={renderItem}
                 keyExtractor={(item, index) => index.toString()}
-                contentContainerStyle={{ paddingBottom: 20 }}
+                contentContainerStyle={{ paddingBottom: 30 }}
             />
         </View>
     );
@@ -62,7 +72,7 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         padding: 12,
-        backgroundColor: '#F6F7FB',   // soft pastel background
+        backgroundColor: '#F6F7FB',
         flex: 1,
     },
     label: {
@@ -76,34 +86,30 @@ const styles = StyleSheet.create({
         borderColor: '#E0E0E0',
         borderRadius: 10,
         padding: 10,
-        marginBottom: 12,
+        marginBottom: 15,
         backgroundColor: '#FFFFFF',
     },
     cardContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        borderRadius: 12,
+        borderRadius: 16,
         padding: 14,
-        marginBottom: 12,
+        marginBottom: 16,
         backgroundColor: '#FFFFFF',
         shadowColor: '#000',
         shadowOpacity: 0.08,
         shadowRadius: 6,
-        elevation: 3,                // Android shadow
+        elevation: 3,
     },
     cardName: {
-        flex: 1,
         fontWeight: '700',
-        fontSize: 16,
-        color: '#6A5ACD',             // soft purple accent
+        fontSize: 18,
+        color: '#6A5ACD',
+        marginBottom: 10,
     },
     cardImage: {
-        width: 140,
-        height: 200,
-        marginLeft: 15,
-        borderRadius: 10,
-        backgroundColor: '#F2F2F2',
+        width: '100%',     // FULL WIDTH
+        height: 320,       // BIGGER IMAGE
+        borderRadius: 14,
+        backgroundColor: '#EEE',
     },
 });
 
